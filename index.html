@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baraka Islamic School - Coming Soon</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .coming-soon {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+            letter-spacing: -0.5px;
+        }
+
+        .school-name {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 2em;
+            color: #34495e;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            line-height: 1.8;
+            color: #555;
+            font-weight: 400;
+        }
+
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-info a:hover {
+            color: #2980b9;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .contact-item i {
+            color: #3498db;
+            width: 20px;
+            font-size: 1.1em;
+        }
+
+        .contact-item p {
+            font-size: 1.05em;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .coming-soon {
+                font-size: 2em;
+            }
+            
+            .school-name {
+                font-size: 1.5em;
+            }
+
+            .logo {
+                max-width: 150px;
+            }
+
+            .contact-item p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="baraka-school-logo.jpg" alt="Baraka Islamic School Logo" class="logo">
+        <h1 class="coming-soon">Coming Soon</h1>
+        <h2 class="school-name">Baraka Islamic School</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-location-dot"></i>
+                <p>6976 Promway Ave NW<br>
+                North Canton, OH 44720</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <p><a href="mailto:info@barakaschool.org">info@barakaschool.org</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <p><a href="tel:330-526-1038">330-526-1038</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            container.style.opacity = 0;
+            
+            let opacity = 0;
+            const fadeIn = setInterval(() => {
+                if (opacity >= 1) {
+                    clearInterval(fadeIn);
+                }
+                container.style.opacity = opacity;
+                opacity += 0.1;
+            }, 100);
+        });
+    </script>
+</body>
+</html> 
