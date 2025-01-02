@@ -55,7 +55,7 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             color: white;
-            font-size: 1.5em;
+            font-size: 1.2em;
         }
 
         nav ul {
@@ -325,6 +325,35 @@
         .volunteer-options .cta-button i {
             font-size: 1.2em;
         }
+
+        /* Add these styles in the style section */
+        .donate-button {
+            background: #27ae60;
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 600;
+            display: block;
+            margin-top: auto;
+            margin-bottom: 2rem;
+            transition: background-color 0.3s;
+        }
+
+        .donate-button:hover {
+            background: #219a52;
+        }
+
+        .donate-button i {
+            margin-right: 8px;
+        }
+
+        /* Update this style to remove margin-top: auto since we're using it on donate button */
+        .sidebar-contact {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+        }
     </style>
 </head>
 <body>
@@ -341,6 +370,11 @@
                 <li><a href="#volunteer">Volunteer</a></li>
             </ul>
         </nav>
+        <a href="https://checkout.square.site/merchant/ML540Y4Y7R5EZ/checkout/WSHEAPQ324BCU3WTTW3GRI5Y" 
+           target="_blank" 
+           class="donate-button">
+            <i class="fas fa-heart"></i> Donate Now
+        </a>
         <div class="sidebar-contact">
             <div class="contact-item">
                 <i class="fas fa-location-dot"></i>
