@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baraka Islamic School - Coming Soon</title>
+    <title>Baraka Islamic School</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Google Fonts -->
@@ -15,79 +15,203 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
         }
 
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        /* Sidebar Styles */
+        .sidebar {
+            width: 300px;
+            background: #2c3e50;
+            color: white;
+            position: fixed;
+            height: 100vh;
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-container {
             text-align: center;
-            max-width: 600px;
-            width: 100%;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
-            max-width: 200px;
+            max-width: 150px;
             height: auto;
-            margin-bottom: 30px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .coming-soon {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 2.5em;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
         }
 
         .school-name {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 2em;
-            color: #34495e;
-            margin-bottom: 30px;
-            letter-spacing: -0.5px;
+            color: white;
+            font-size: 1.5em;
         }
 
-        .contact-info {
-            margin-top: 30px;
-            line-height: 1.8;
-            color: #555;
-            font-weight: 400;
+        nav ul {
+            list-style: none;
+            margin-bottom: 2rem;
         }
 
-        .contact-info a {
-            color: #3498db;
+        nav a {
             text-decoration: none;
-            transition: color 0.3s ease;
+            color: white;
             font-weight: 500;
+            transition: color 0.3s;
+            display: block;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .contact-info a:hover {
-            color: #2980b9;
+        nav a:hover {
+            color: #3498db;
+        }
+
+        nav {
+            flex: 1;
+        }
+
+        /* Contact Info in Sidebar */
+        .sidebar-contact {
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: auto;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item i {
+            color: #3498db;
+            width: 20px;
+            font-size: 1.1em;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #3498db;
+        }
+
+        /* Main Content Styles */
+        main {
+            margin-left: 300px;
+            width: calc(100% - 300px);
+            background: #f5f7fa;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        section:nth-child(even) {
+            background: #f5f7fa;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Video Section */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            margin: 2rem 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Fundraiser Section */
+        .fundraiser-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.3s;
+        }
+
+        .fundraiser-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Form Section */
+        .form-section {
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #2980b9;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-info {
+            line-height: 1.8;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
             gap: 12px;
             margin-bottom: 12px;
         }
@@ -98,49 +222,132 @@
             font-size: 1.1em;
         }
 
-        .contact-item p {
-            font-size: 1.05em;
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .contact-info a:hover {
+            color: #3498db;
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-            }
-            
-            .coming-soon {
-                font-size: 2em;
-            }
-            
-            .school-name {
-                font-size: 1.5em;
+        /* Mobile Responsive Updates */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
             }
 
-            .logo {
-                max-width: 150px;
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1rem;
+                flex-direction: column;
             }
 
-            .contact-item p {
-                font-size: 1em;
+            main {
+                margin-left: 0;
+                width: 100%;
             }
+
+            .logo-container {
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 5px;
+            }
+
+            .sidebar-contact {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            nav {
+                flex: none;
+            }
+
+            .sidebar-contact {
+                margin-top: 2rem;
+            }
+        }
+
+        /* Volunteer Section Styles */
+        .volunteer-section {
+            text-align: center;
+            background: #f5f7fa;
+        }
+
+        .volunteer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .volunteer-intro {
+            font-size: 1.2em;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .volunteer-description {
+            margin-bottom: 2rem;
+            color: #34495e;
+        }
+
+        .volunteer-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .volunteer-options .cta-button {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .volunteer-options .cta-button i {
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="baraka-school-logo.jpg" alt="Baraka Islamic School Logo" class="logo">
-        <h1 class="coming-soon">Coming Soon</h1>
-        <h2 class="school-name">Baraka Islamic School</h2>
-        <div class="contact-info">
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="baraka-school-logo.jpg" alt="Baraka Islamic School Logo" class="logo">
+            <h1 class="school-name">Baraka Islamic School</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#video">About Us</a></li>
+                <li><a href="#fundraiser">Fundraiser</a></li>
+                <li><a href="#form">Interest Form</a></li>
+                <li><a href="#volunteer">Volunteer</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-contact">
             <div class="contact-item">
                 <i class="fas fa-location-dot"></i>
-                <p><a href="https://www.google.com/maps?q=6976+Promway+Ave+NW,+North+Canton,+OH+44720" target="_blank">6976 Promway Ave NW<br>
-                North Canton, OH 44720</a></p>
+                <p><a href="https://www.google.com/maps?q=6976+Promway+Ave+NW,+North+Canton,+OH+44720" target="_blank">
+                    6976 Promway Ave NW<br>
+                    North Canton, OH 44720
+                </a></p>
             </div>
             <div class="contact-item">
                 <i class="fas fa-envelope"></i>
@@ -159,22 +366,61 @@
                 <p><a href="https://www.youtube.com/channel/UCj1AW9qDGK8UsRDW2Z7ZJkw" target="_blank">YouTube Channel</a></p>
             </div>
         </div>
-    </div>
+    </aside>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.querySelector('.container');
-            container.style.opacity = 0;
-            
-            let opacity = 0;
-            const fadeIn = setInterval(() => {
-                if (opacity >= 1) {
-                    clearInterval(fadeIn);
-                }
-                container.style.opacity = opacity;
-                opacity += 0.1;
-            }, 100);
-        });
-    </script>
+    <main>
+        <section id="video">
+            <h2 class="section-title">About Our School</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/U5a3WJ-nW6c" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="fundraiser">
+            <h2 class="section-title">Support Our School</h2>
+            <a href="https://checkout.square.site/merchant/ML540Y4Y7R5EZ/checkout/WSHEAPQ324BCU3WTTW3GRI5Y" 
+               target="_blank">
+                <img src="baraka_school_fundraiser.webp" 
+                     alt="Baraka School Fundraiser" 
+                     class="fundraiser-image">
+            </a>
+        </section>
+
+        <section id="form" class="form-section">
+            <h2 class="section-title">Enrollment Interest Form</h2>
+            <p>We value your input in shaping the future of Islamic education in our community.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKas1bhWQabTvgRYGlB4dD-UdOCQe9TWbtOvMqEtIruG-35A/viewform?usp=send_form" 
+               target="_blank" 
+               class="cta-button">
+               Click here to fill out the Enrollment Interest Form
+            </a>
+        </section>
+
+        <section id="volunteer" class="volunteer-section">
+            <h2 class="section-title">Volunteer With Us</h2>
+            <div class="volunteer-content">
+                <p class="volunteer-intro">Please volunteer and help make this project a success!</p>
+                <p class="volunteer-description">You can get involved in any of these ways:</p>
+                <div class="volunteer-options">
+                    <a href="https://chat.whatsapp.com/EYufq215GGEGSdWZ1PcaDu" 
+                       target="_blank" 
+                       class="cta-button">
+                       <i class="fab fa-whatsapp"></i> Join our WhatsApp Volunteers group
+                    </a>
+                    <a href="mailto:info@barakaschool.org" 
+                       class="cta-button">
+                       <i class="fas fa-envelope"></i> Email us your details
+                    </a>
+                    <a href="tel:330-526-1038" 
+                       class="cta-button">
+                       <i class="fas fa-phone"></i> Call us at 330-526-1038
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html> 
