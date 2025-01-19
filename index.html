@@ -354,6 +354,58 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 2rem;
         }
+
+        /* Add these new styles for the video gallery */
+        .video-gallery {
+            margin-top: 2rem;
+        }
+
+        .video-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .video-thumbnail {
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .video-thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .video-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>');
+            background-size: contain;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .video-thumbnail:hover::after {
+            opacity: 1;
+        }
+
+        .video-title {
+            margin-top: 0.5rem;
+            font-size: 0.9em;
+            color: #2c3e50;
+        }
     </style>
 </head>
 <body>
@@ -407,11 +459,16 @@
     <main>
         <section id="video">
             <h2 class="section-title">About Our School</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/U5a3WJ-nW6c" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
+            <div class="video-gallery">
+                <div class="video-container">
+                    <iframe id="player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
+                <div class="video-thumbnails" id="videoThumbnails">
+                    <!-- Thumbnails will be dynamically added here -->
+                </div>
             </div>
         </section>
 
@@ -458,5 +515,62 @@
             </div>
         </section>
     </main>
+
+    <script>
+        // Helper function to extract video ID from YouTube URL
+        function extractVideoInfo(url) {
+            // Handle different YouTube URL formats
+            let videoId = '';
+            if (url.includes('youtu.be/')) {
+                videoId = url.split('youtu.be/')[1].split('?')[0];
+            } else if (url.includes('youtube.com/watch')) {
+                const urlParams = new URLSearchParams(url.split('?')[1]);
+                videoId = urlParams.get('v');
+            } else if (url.includes('youtube.com/embed/')) {
+                videoId = url.split('youtube.com/embed/')[1].split('?')[0];
+            }
+            
+            return {
+                id: videoId,
+                title: 'Loading...' // Will be updated when thumbnail loads
+            };
+        }
+
+        // YouTube URLs array remains the same
+        const videoUrls = [
+            { url: 'https://www.youtube.com/watch?v=U5a3WJ-nW6c', title: 'Baraka Islamic School Introduction' },
+            { url: 'https://www.youtube.com/watch?v=U5a3WJ-nW6c', title: 'Baraka Islamic School Intro Meeting 12 8 24' },
+            { url: 'https://www.youtube.com/watch?v=twUx0tq5550', title: 'Baraka Islamic School FAQ\'s Part 1' },
+            { url: 'https://www.youtube.com/watch?v=dK0frbSH2EA', title: 'Baraka Islamic School FAQ\'s Part 2' },
+        ];
+
+        // Convert URLs to video info
+        const videos = videoUrls.map(item => ({
+            ...extractVideoInfo(item.url),
+            title: item.title
+        }));
+
+        // Initialize player immediately with the first video
+        const playerContainer = document.getElementById('player');
+        playerContainer.src = `https://www.youtube.com/embed/${videos[0].id}?rel=0&playsinline=1`;
+
+        // Create video thumbnails
+        const thumbnailsContainer = document.getElementById('videoThumbnails');
+        videos.forEach((video, index) => {
+            const thumbnail = document.createElement('div');
+            thumbnail.className = 'video-thumbnail';
+            
+            thumbnail.innerHTML = `
+                <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title}">
+                <div class="video-title">${video.title}</div>
+            `;
+            
+            thumbnail.addEventListener('click', () => {
+                // Update iframe src directly
+                playerContainer.src = `https://www.youtube.com/embed/${video.id}?rel=0&playsinline=1&autoplay=1`;
+            });
+            thumbnailsContainer.appendChild(thumbnail);
+        });
+    </script>
 </body>
 </html> 
