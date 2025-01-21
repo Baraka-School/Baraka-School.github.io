@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baraka Islamic School</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Google Fonts -->
@@ -28,7 +36,7 @@
         /* Sidebar Styles */
         .sidebar {
             width: 300px;
-            background: #2c3e50;
+            background: #0A5640;
             color: white;
             position: fixed;
             height: 100vh;
@@ -74,7 +82,7 @@
         }
 
         nav a:hover {
-            color: #3498db;
+            color: #4CAF50;
         }
 
         nav {
@@ -85,7 +93,7 @@
         .sidebar-contact {
             margin-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
+            padding-top: 1rem;
             margin-top: auto;
         }
 
@@ -97,9 +105,13 @@
         }
 
         .contact-item i {
-            color: #3498db;
+            color: #4CAF50;
             width: 20px;
             font-size: 1.1em;
+        }
+
+        .contact-item p {
+            margin: 0;
         }
 
         .contact-item a {
@@ -109,7 +121,7 @@
         }
 
         .contact-item a:hover {
-            color: #3498db;
+            color: #4CAF50;
         }
 
         /* Main Content Styles */
@@ -178,7 +190,7 @@
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
-            background: #3498db;
+            background: #4CAF50;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -187,12 +199,12 @@
         }
 
         .cta-button:hover {
-            background: #2980b9;
+            background: #388E3C;
         }
 
         /* Footer Styles */
         footer {
-            background: #2c3e50;
+            background: #0A5640;
             color: white;
             padding: 3rem 2rem;
         }
@@ -217,7 +229,7 @@
         }
 
         .contact-item i {
-            color: #3498db;
+            color: #4CAF50;
             width: 20px;
             font-size: 1.1em;
         }
@@ -229,7 +241,7 @@
         }
 
         .contact-info a:hover {
-            color: #3498db;
+            color: #4CAF50;
         }
 
         /* Mobile Responsive Updates */
@@ -270,9 +282,35 @@
             }
 
             .sidebar-contact {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1rem;
+                display: block;
+                text-align: center;
+            }
+
+            .contact-item:not(:has(.fab)) {
+                text-align: left;
+                margin-bottom: 1rem;
+            }
+
+            .social-links {
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* Hide text ONLY in mobile view */
+            .social-links .contact-item p {
+                display: none;
+            }
+
+            .social-links .contact-item {
+                margin: 0;
+            }
+
+            .social-links .contact-item i {
+                font-size: 1.5em;
             }
 
             nav {
@@ -280,7 +318,12 @@
             }
 
             .sidebar-contact {
-                margin-top: 2rem;
+                margin-top: 0;
+                padding-top: 1rem;
+            }
+
+            .donate-button {
+                margin: 1rem 0;
             }
         }
 
@@ -320,15 +363,16 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            background: #4CAF50;
         }
 
-        .volunteer-options .cta-button i {
-            font-size: 1.2em;
+        .volunteer-options .cta-button:hover {
+            background: #388E3C;
         }
 
         /* Add these styles in the style section */
         .donate-button {
-            background: #27ae60;
+            background: #4CAF50;
             color: white;
             text-decoration: none;
             padding: 1rem;
@@ -337,12 +381,12 @@
             font-weight: 600;
             display: block;
             margin-top: auto;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             transition: background-color 0.3s;
         }
 
         .donate-button:hover {
-            background: #219a52;
+            background: #388E3C;
         }
 
         .donate-button i {
@@ -352,25 +396,32 @@
         /* Update this style to remove margin-top: auto since we're using it on donate button */
         .sidebar-contact {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
+            padding-top: 1rem;
         }
 
-        /* Add these new styles for the video gallery */
+        /* Update these video gallery styles */
         .video-gallery {
             margin-top: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .video-thumbnails {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .video-thumbnail {
             cursor: pointer;
             position: relative;
             transition: transform 0.2s;
+            max-width: 180px;
         }
 
         .video-thumbnail:hover {
@@ -383,28 +434,40 @@
             border-radius: 8px;
         }
 
-        .video-thumbnail::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 48px;
-            height: 48px;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>');
-            background-size: contain;
-            opacity: 0.8;
-            transition: opacity 0.2s;
-        }
-
-        .video-thumbnail:hover::after {
-            opacity: 1;
-        }
-
         .video-title {
             margin-top: 0.5rem;
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #2c3e50;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 1.3;
+            height: 2.6em;
+        }
+
+        /* Update mobile-specific styles */
+        @media (max-width: 768px) {
+            .video-thumbnails {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+                max-width: 100%;
+            }
+
+            .video-thumbnail {
+                max-width: none;
+            }
+
+            .video-title {
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-thumbnails {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -434,24 +497,32 @@
                 North Canton, OH 44720</a></p>
             </div>
             <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <p><a href="mailto:info@barakaschool.org">info@barakaschool.org</a></p>
-            </div>
-            <div class="contact-item">
                 <i class="fas fa-phone"></i>
                 <p><a href="tel:330-526-1038">330-526-1038</a></p>
             </div>
             <div class="contact-item">
-                <i class="fab fa-facebook"></i>
-                <p><a href="https://www.facebook.com/barakaislamicschool" target="_blank">Follow us on Facebook</a></p>
+                <i class="fas fa-envelope"></i>
+                <p><a href="mailto:info@barakaschool.org">info@barakaschool.org</a></p>
             </div>
-            <div class="contact-item">
-                <i class="fab fa-instagram"></i>
-                <p><a href="https://www.instagram.com/barakaislamicschool?igsh=anEwaTZ6ZTFhN3Ry" target="_blank">Follow us on Instagram</a></p>
-            </div>
-            <div class="contact-item">
-                <i class="fab fa-youtube"></i>
-                <p><a href="https://www.youtube.com/channel/UCj1AW9qDGK8UsRDW2Z7ZJkw" target="_blank">YouTube Channel</a></p>
+            <div class="social-links">
+                <div class="contact-item">
+                    <a href="https://www.facebook.com/barakaislamicschool" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <p><a href="https://www.facebook.com/barakaislamicschool" target="_blank">Follow us on Facebook</a></p>
+                </div>
+                <div class="contact-item">
+                    <a href="https://www.instagram.com/barakaislamicschool?igsh=anEwaTZ6ZTFhN3Ry" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <p><a href="https://www.instagram.com/barakaislamicschool?igsh=anEwaTZ6ZTFhN3Ry" target="_blank">Follow us on Instagram</a></p>
+                </div>
+                <div class="contact-item">
+                    <a href="https://www.youtube.com/channel/UCj1AW9qDGK8UsRDW2Z7ZJkw" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <p><a href="https://www.youtube.com/channel/UCj1AW9qDGK8UsRDW2Z7ZJkw" target="_blank">YouTube Channel</a></p>
+                </div>
             </div>
         </div>
     </aside>
