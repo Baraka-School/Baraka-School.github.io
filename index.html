@@ -407,27 +407,92 @@
 
         /* Update these video gallery styles */
         .video-gallery {
+            position: relative;
             margin-top: 2rem;
             max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
         }
 
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 86, 64, 0.9); /* Made more opaque */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, opacity 0.3s;
+            z-index: 10; /* Increased z-index */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Added shadow for better visibility */
+        }
+
+        .scroll-button:hover {
+            background: rgba(10, 86, 64, 1);
+        }
+
+        .scroll-button.left {
+            left: 0; /* Changed from -20px */
+        }
+
+        .scroll-button.right {
+            right: 0; /* Changed from -20px */
+        }
+
+        .scroll-button.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .video-thumbnails-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding: 0 20px;
+            margin-top: 1rem;
+        }
+
         .video-thumbnails {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
             gap: 1rem;
             margin-top: 1rem;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #4CAF50 #f0f0f0;
+            scroll-padding: 0 20px;
+        }
+
+        .video-thumbnails::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .video-thumbnails::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        .video-thumbnails::-webkit-scrollbar-thumb {
+            background-color: #4CAF50;
+            border-radius: 4px;
         }
 
         .video-thumbnail {
+            flex: 0 0 calc(25% - 0.75rem); /* Show exactly 4 thumbnails */
+            min-width: 180px;
             cursor: pointer;
             position: relative;
             transition: transform 0.2s;
-            max-width: 180px;
         }
 
         .video-thumbnail:hover {
@@ -455,18 +520,32 @@
 
         /* Update mobile-specific styles */
         @media (max-width: 768px) {
-            .video-thumbnails {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.5rem;
-                max-width: 100%;
+            .video-thumbnail {
+                flex: 0 0 calc(50% - 0.5rem); /* Show 2 thumbnails on mobile */
+                min-width: 140px;
             }
 
-            .video-thumbnail {
-                max-width: none;
+            .video-thumbnails {
+                gap: 0.5rem;
+                padding: 0.5rem 0;
             }
 
             .video-title {
                 font-size: 0.8em;
+            }
+
+            .scroll-button {
+                width: 32px;
+                height: 32px;
+                font-size: 0.8em;
+            }
+            
+            .scroll-button.left {
+                left: 0;
+            }
+            
+            .scroll-button.right {
+                right: 0;
             }
         }
 
@@ -543,8 +622,16 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen></iframe>
                 </div>
-                <div class="video-thumbnails" id="videoThumbnails">
-                    <!-- Thumbnails will be dynamically added here -->
+                <div class="video-thumbnails-wrapper">
+                    <button class="scroll-button left" id="scrollLeft">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="scroll-button right" id="scrollRight">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="video-thumbnails" id="videoThumbnails">
+                        <!-- Thumbnails will be dynamically added here -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -615,11 +702,12 @@
 
         // YouTube URLs array remains the same
         const videoUrls = [
-            { url: 'https://www.youtube.com/watch?v=U5a3WJ-nW6c', title: 'Baraka Islamic School Introduction' },
-            { url: 'https://www.youtube.com/watch?v=U5a3WJ-nW6c', title: 'Baraka Islamic School Intro Meeting 12 8 24' },
-            { url: 'https://www.youtube.com/watch?v=twUx0tq5550', title: 'Baraka Islamic School FAQ\'s Part 1' },
-            { url: 'https://www.youtube.com/watch?v=dK0frbSH2EA', title: 'Baraka Islamic School FAQ\'s Part 2' },
+            { url: 'https://www.youtube.com/watch?v=HiCCbCjfHQY', title: 'Baraka Islamic School FAQ\'s Part 4' },
             { url: 'https://www.youtube.com/watch?v=ufhyerbdvhM', title: 'Baraka Islamic School FAQ\'s Part 3' },
+            { url: 'https://www.youtube.com/watch?v=dK0frbSH2EA', title: 'Baraka Islamic School FAQ\'s Part 2' },
+            { url: 'https://www.youtube.com/watch?v=twUx0tq5550', title: 'Baraka Islamic School FAQ\'s Part 1' },
+            { url: 'https://www.youtube.com/watch?v=U5a3WJ-nW6c', title: 'Baraka Islamic School Intro Meeting 12 8 24' },
+            { url: 'https://www.youtube.com/watch?v=U5a3WJ-nW6c', title: 'Baraka Islamic School Introduction' },
         ];
 
         // Convert URLs to video info
@@ -649,6 +737,39 @@
             });
             thumbnailsContainer.appendChild(thumbnail);
         });
+
+        // Add scroll button functionality - remove the thumbnailsContainer declaration since we already have it
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+
+        // Scroll buttons functionality
+        scrollLeftBtn.addEventListener('click', () => {
+            thumbnailsContainer.scrollBy({
+                left: -200,
+                behavior: 'smooth'
+            });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            thumbnailsContainer.scrollBy({
+                left: 200,
+                behavior: 'smooth'
+            });
+        });
+
+        // Update button visibility based on scroll position
+        function updateScrollButtons() {
+            const { scrollLeft, scrollWidth, clientWidth } = thumbnailsContainer;
+            
+            scrollLeftBtn.classList.toggle('hidden', scrollLeft <= 0);
+            scrollRightBtn.classList.toggle('hidden', scrollLeft >= scrollWidth - clientWidth - 1);
+        }
+
+        thumbnailsContainer.addEventListener('scroll', updateScrollButtons);
+        window.addEventListener('resize', updateScrollButtons);
+
+        // Initial button state
+        updateScrollButtons();
     </script>
 </body>
 </html> 
