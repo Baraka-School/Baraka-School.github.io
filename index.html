@@ -554,6 +554,132 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* Past Events Link Styles */
+        .past-events-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .past-events-link a {
+            color: #0A5640;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 1px solid #0A5640;
+            border-radius: 4px;
+        }
+
+        .past-events-link a:hover {
+            background-color: #0A5640;
+            color: white;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            color: #2c3e50;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #0A5640;
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            margin: 2rem auto;
+            max-width: 600px;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-slide img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 86, 64, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-button:hover {
+            background: rgba(10, 86, 64, 1);
+        }
+
+        .carousel-button.prev {
+            left: 10px;
+        }
+
+        .carousel-button.next {
+            right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 90%;
+                margin: 15% auto;
+                padding: 1.5rem;
+            }
+            
+            .carousel-button {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -565,7 +691,7 @@
         <nav>
             <ul>
                 <li><a href="#video">About Us</a></li>
-                <li><a href="#fundraiser">Fundraiser</a></li>
+                <li><a href="#fundraiser">Events</a></li>
                 <li><a href="#form">Interest Survey</a></li>
                 <li><a href="#volunteer">Volunteer</a></li>
             </ul>
@@ -640,10 +766,13 @@
             <h2 class="section-title">Support Our School</h2>
             <a href="https://checkout.square.site/merchant/ML540Y4Y7R5EZ/checkout/WSHEAPQ324BCU3WTTW3GRI5Y" 
                target="_blank">
-                <img src="baraka_school_fundraiser.webp" 
+                <img src="iftar-fundraiser.jpeg" 
                      alt="Baraka School Fundraiser" 
                      class="fundraiser-image">
             </a>
+            <div class="past-events-link">
+                <a href="#" id="pastEventsLink">View Past Events</a>
+            </div>
         </section>
 
         <section id="form" class="form-section">
@@ -679,6 +808,22 @@
             </div>
         </section>
     </main>
+
+    <!-- Past Events Modal -->
+    <div id="pastEventsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Past Events</h2>
+            <div class="carousel-container">
+                <div class="carousel-slide">
+                    <img src="baraka_school_fundraiser.webp" alt="Previous Fundraiser Event">
+                </div>
+                <!-- Additional slides can be added here -->
+                <button class="carousel-button prev">&#10094;</button>
+                <button class="carousel-button next">&#10095;</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Helper function to extract video ID from YouTube URL
@@ -770,6 +915,70 @@
 
         // Initial button state
         updateScrollButtons();
+
+        // Modal and Carousel functionality
+        const modal = document.getElementById('pastEventsModal');
+        const pastEventsLink = document.getElementById('pastEventsLink');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // Open modal when clicking the link
+        pastEventsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        });
+        
+        // Close modal when clicking the X
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        });
+        
+        // Close modal when clicking outside the modal content
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // For future carousel functionality when more images are added
+        const prevButton = document.querySelector('.carousel-button.prev');
+        const nextButton = document.querySelector('.carousel-button.next');
+        
+        // Currently we only have one image, but this structure allows for easy expansion
+        // Hide navigation buttons when only one slide
+        prevButton.style.display = 'none';
+        nextButton.style.display = 'none';
+        
+        // When more slides are added, this code can be uncommented and expanded:
+        /*
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        
+        prevButton.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        });
+        
+        nextButton.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        });
+        
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.style.display = 'flex';
+                } else {
+                    slide.style.display = 'none';
+                }
+            });
+        }
+        
+        // Initialize carousel
+        updateCarousel();
+        */
     </script>
 </body>
 </html> 
