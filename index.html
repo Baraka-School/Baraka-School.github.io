@@ -27,61 +27,45 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="logo-container">
-            <img src="baraka-school-logo.jpg" alt="Baraka Islamic School Logo" class="logo">
-            <h1 class="school-name">Baraka Islamic School</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#video">About Us</a></li>
-                <li><a href="#fundraiser">Events</a></li>
-                <li><a href="#form">Interest Survey</a></li>
-                <li><a href="#volunteer">Volunteer</a></li>
-            </ul>
-        </nav>
-        <a href="https://checkout.square.site/merchant/ML540Y4Y7R5EZ/checkout/WSHEAPQ324BCU3WTTW3GRI5Y" 
-           target="_blank" 
-           class="donate-button">
-            <i class="fas fa-heart"></i> Donate Now
-        </a>
-        <div class="sidebar-contact">
-            <div class="contact-item">
-                <i class="fas fa-location-dot"></i>
-                <p><a href="https://www.google.com/maps?q=6976+Promway+Ave+NW,+North+Canton,+OH+44720" target="_blank">6978 Promway Ave NW<br>
-                North Canton, OH 44720</a></p>
+    <!-- Horizontal Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="index.html" class="logo-link">
+                    <img src="baraka-school-logo.jpg" alt="Baraka Islamic School Logo" class="navbar-logo">
+                    <h1 class="navbar-title">Baraka Islamic School</h1>
+                </a>
             </div>
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <p><a href="tel:330-526-1038">330-526-1038</a></p>
+            
+            <div class="navbar-menu">
+                <ul class="navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="navbar-dropdown">
+                        <a href="#" class="dropdown-toggle">About Us <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="board.html">Board</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="parents.html">Parents</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                </ul>
             </div>
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <p><a href="mailto:info@barakaschool.org">info@barakaschool.org</a></p>
-            </div>
-            <div class="social-links">
-                <div class="contact-item">
-                    <a href="https://www.facebook.com/barakaislamicschool" target="_blank">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <p><a href="https://www.facebook.com/barakaislamicschool" target="_blank">Follow us on Facebook</a></p>
-                </div>
-                <div class="contact-item">
-                    <a href="https://www.instagram.com/barakaislamicschool?igsh=anEwaTZ6ZTFhN3Ry" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <p><a href="https://www.instagram.com/barakaislamicschool?igsh=anEwaTZ6ZTFhN3Ry" target="_blank">Follow us on Instagram</a></p>
-                </div>
-                <div class="contact-item">
-                    <a href="https://www.youtube.com/channel/UCj1AW9qDGK8UsRDW2Z7ZJkw" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <p><a href="https://www.youtube.com/channel/UCj1AW9qDGK8UsRDW2Z7ZJkw" target="_blank">YouTube Channel</a></p>
-                </div>
+            
+            <div class="navbar-actions">
+                <a href="https://checkout.square.site/merchant/ML540Y4Y7R5EZ/checkout/WSHEAPQ324BCU3WTTW3GRI5Y" 
+                   target="_blank" 
+                   class="donate-button">
+                    <i class="fas fa-heart"></i> Donate Now
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
-    </aside>
+    </nav>
 
+    <!-- Main Content -->
     <main>
         <section id="video">
             <h2 class="section-title">About Our School</h2>
@@ -152,6 +136,64 @@
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-location-dot"></i>
+                            <p><a href="https://www.google.com/maps?q=6976+Promway+Ave+NW,+North+Canton,+OH+44720" target="_blank">6978 Promway Ave NW, North Canton, OH 44720</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p><a href="tel:330-526-1038">330-526-1038</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p><a href="mailto:info@barakaschool.org">info@barakaschool.org</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/barakaislamicschool" target="_blank" title="Follow us on Facebook">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="https://www.instagram.com/barakaislamicschool?igsh=anEwaTZ6ZTFhN3Ry" target="_blank" title="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCj1AW9qDGK8UsRDW2Z7ZJkw" target="_blank" title="YouTube Channel">
+                            <i class="fab fa-youtube"></i>
+                            <span>YouTube</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="board.html">Board Members</a>
+                        <a href="parents.html">Parent Resources</a>
+                        <a href="careers.html">Career Opportunities</a>
+                        <a href="resources.html">School Resources</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Baraka Islamic School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Past Events Modal -->
     <div id="pastEventsModal" class="modal">
@@ -229,7 +271,7 @@
             thumbnailsContainer.appendChild(thumbnail);
         });
 
-        // Add scroll button functionality - remove the thumbnailsContainer declaration since we already have it
+        // Add scroll button functionality
         const scrollLeftBtn = document.getElementById('scrollLeft');
         const scrollRightBtn = document.getElementById('scrollRight');
 
@@ -261,6 +303,39 @@
 
         // Initial button state
         updateScrollButtons();
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navbarMenu = document.querySelector('.navbar-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.navbar-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbarMenu.classList.remove('active');
+            });
+        });
+
+        // Dropdown functionality
+        document.querySelectorAll('.navbar-dropdown').forEach(dropdown => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        });
 
         // Modal and Carousel functionality
         const modal = document.getElementById('pastEventsModal');
@@ -296,35 +371,6 @@
         // Hide navigation buttons when only one slide
         prevButton.style.display = 'none';
         nextButton.style.display = 'none';
-        
-        // When more slides are added, this code can be uncommented and expanded:
-        /*
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        
-        prevButton.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            updateCarousel();
-        });
-        
-        nextButton.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateCarousel();
-        });
-        
-        function updateCarousel() {
-            slides.forEach((slide, index) => {
-                if (index === currentSlide) {
-                    slide.style.display = 'flex';
-                } else {
-                    slide.style.display = 'none';
-                }
-            });
-        }
-        
-        // Initialize carousel
-        updateCarousel();
-        */
     </script>
 </body>
 </html> 
