@@ -1305,6 +1305,120 @@ section:nth-child(even) {
     color: #b0b0b0;
 }
 
+/* Curriculum Section Styles */
+.curriculum-section {
+    background: white;
+}
+
+.curriculum-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #4CAF50;
+}
+
+.curriculum-intro p {
+    font-size: 1.1em;
+    color: #34495e;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.curriculum-table-container {
+    margin-bottom: 3rem;
+    overflow-x: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.curriculum-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.curriculum-table thead {
+    background: #0A5640;
+    color: white;
+}
+
+.curriculum-table th {
+    padding: 1.5rem;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.curriculum-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    color: #34495e;
+    line-height: 1.6;
+}
+
+.curriculum-table .grade-header td {
+    background: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #0A5640;
+    font-size: 1.1em;
+    border-bottom: 2px solid #4CAF50;
+    padding: 1.2rem 1.5rem;
+}
+
+.curriculum-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.curriculum-table .grade-header:hover {
+    background: #f8f9fa !important;
+}
+
+.curriculum-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.9em;
+    transition: background 0.3s;
+}
+
+.curriculum-link:hover {
+    background: #388E3C;
+}
+
+.curriculum-contact {
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #4CAF50;
+    padding: 2rem;
+    text-align: center;
+}
+
+.contact-info-curriculum h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4em;
+    color: #0A5640;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.contact-info-curriculum p {
+    color: #34495e;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
 /* Mobile responsive for footer */
 @media (max-width: 768px) {
     .footer-content {
@@ -1330,5 +1444,49 @@ section:nth-child(even) {
     
     .footer {
         padding: 30px 0 20px;
+    }
+    
+    /* Mobile Curriculum Styles */
+    .curriculum-intro {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .curriculum-intro p {
+        font-size: 1em;
+    }
+    
+    .curriculum-table th {
+        padding: 1rem;
+        font-size: 1em;
+    }
+    
+    .curriculum-table td {
+        padding: 0.8rem 1rem;
+        font-size: 0.9em;
+    }
+    
+    .curriculum-table .grade-header td {
+        padding: 1rem;
+        font-size: 1em;
+    }
+    
+    .curriculum-link {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8em;
+    }
+    
+    .curriculum-contact {
+        padding: 1.5rem;
+    }
+    
+    .contact-info-curriculum h3 {
+        font-size: 1.2em;
+        margin-bottom: 0.8rem;
+    }
+    
+    .contact-info-curriculum p {
+        font-size: 0.95em;
+        margin-bottom: 1rem;
     }
 }
