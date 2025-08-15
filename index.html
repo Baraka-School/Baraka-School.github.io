@@ -73,6 +73,18 @@
 
     <!-- Main Content -->
     <main>
+        <section id="events">
+            <h2 class="section-title">Upcoming Events & Announcements</h2>
+            <a href="#" target="_blank">
+                <img src="open-house-announcement-2025.webp" 
+                     alt="Baraka School Open House 2025" 
+                     class="fundraiser-image">
+            </a>
+            <div class="past-events-link">
+                <a href="#" id="pastEventsLink">View Past Events</a>
+            </div>
+        </section>
+
         <section id="video">
             <h2 class="section-title">About Our School</h2>
             <div class="video-gallery">
@@ -93,19 +105,6 @@
                         <!-- Thumbnails will be dynamically added here -->
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="fundraiser">
-            <h2 class="section-title">Support Our School</h2>
-            <a href="https://checkout.square.site/merchant/ML540Y4Y7R5EZ/checkout/FSGZY647O2UVJXXF5NUKZNZB?src=webqr" 
-               target="_blank">
-                <img src="iftar-fundraiser.jpeg" 
-                     alt="Baraka School Fundraiser" 
-                     class="fundraiser-image">
-            </a>
-            <div class="past-events-link">
-                <a href="#" id="pastEventsLink">View Past Events</a>
             </div>
         </section>
 
@@ -207,14 +206,22 @@
             <span class="close-modal">&times;</span>
             <h2>Past Events</h2>
             <div class="carousel-container">
-                <div class="carousel-slide">
-                    <a href="https://checkout.square.site/merchant/ML540Y4Y7R5EZ/checkout/WSHEAPQ324BCU3WTTW3GRI5Y">
-                        <img src="baraka_school_fundraiser.webp" alt="Previous Fundraiser Event">
-                    </a>
+                <div class="carousel-slides" id="carouselSlides">
+                    <div class="carousel-slide active">
+                        <a href="https://checkout.square.site/merchant/ML540Y4Y7R5EZ/checkout/FSGZY647O2UVJXXF5NUKZNZB?src=webqr" target="_blank">
+                            <img src="iftar-fundraiser.jpeg" alt="Iftar Fundraiser Event">
+                        </a>
+                        <h3>Iftar Fundraiser</h3>
+                    </div>
+                    <div class="carousel-slide">
+                        <a href="https://checkout.square.site/merchant/ML540Y4Y7R5EZ/checkout/WSHEAPQ324BCU3WTTW3GRI5Y" target="_blank">
+                            <img src="baraka_school_fundraiser.webp" alt="Previous Fundraiser Event">
+                        </a>
+                        <h3>School Fundraiser</h3>
+                    </div>
                 </div>
-                <!-- Additional slides can be added here -->
-                <button class="carousel-button prev">&#10094;</button>
-                <button class="carousel-button next">&#10095;</button>
+                <button class="carousel-button prev" id="carouselPrev">&#10094;</button>
+                <button class="carousel-button next" id="carouselNext">&#10095;</button>
             </div>
         </div>
     </div>
@@ -347,12 +354,48 @@
         const modal = document.getElementById('pastEventsModal');
         const pastEventsLink = document.getElementById('pastEventsLink');
         const closeModal = document.querySelector('.close-modal');
+        const carouselSlides = document.getElementById('carouselSlides');
+        const prevButton = document.getElementById('carouselPrev');
+        const nextButton = document.getElementById('carouselNext');
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        // Show carousel navigation buttons since we have multiple slides
+        if (totalSlides > 1) {
+            prevButton.style.display = 'block';
+            nextButton.style.display = 'block';
+        }
+
+        // Function to update carousel display
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        // Next slide functionality
+        nextButton.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        });
+
+        // Previous slide functionality
+        prevButton.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
         
         // Open modal when clicking the link
         pastEventsLink.addEventListener('click', (e) => {
             e.preventDefault();
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            currentSlide = 0; // Reset to first slide
+            updateCarousel();
         });
         
         // Close modal when clicking the X
@@ -368,15 +411,6 @@
                 document.body.style.overflow = 'auto';
             }
         });
-        
-        // For future carousel functionality when more images are added
-        const prevButton = document.querySelector('.carousel-button.prev');
-        const nextButton = document.querySelector('.carousel-button.next');
-        
-        // Currently we only have one image, but this structure allows for easy expansion
-        // Hide navigation buttons when only one slide
-        prevButton.style.display = 'none';
-        nextButton.style.display = 'none';
     </script>
 </body>
 </html> 
